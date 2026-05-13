@@ -9,6 +9,8 @@ venv/
 env/
 ENV/
 
+.venv/
+
 # Environment variables
 .env
 
@@ -46,6 +48,3 @@ dist/
 static/*.png
 
 # Dataset files (optional)
-# Remove these lines if you WANT to upload datasets
-train.csv
-test.csv
