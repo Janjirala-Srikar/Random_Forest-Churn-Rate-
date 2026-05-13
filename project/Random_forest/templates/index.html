@@ -31,7 +31,7 @@
         body {
             margin: 0;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             background: var(--bg);
             color: var(--ink);
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -41,13 +41,14 @@
 
         .shell {
             display: grid;
-            grid-template-columns: 248px minmax(0, 1fr);
-            height: 100vh;
+            grid-template-columns: 240px minmax(0, 1fr);
+            min-height: 100vh;
         }
 
         .sidebar {
-            background: #111827;
-            color: #e5e7eb;
+            background: #ffffff;
+            color: var(--ink);
+            border-right: 1px solid var(--line);
             padding: 24px 18px;
             position: sticky;
             top: 0;
@@ -62,8 +63,8 @@
         }
 
         .brand-mark {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
             background: #0f766e;
             display: grid;
@@ -73,7 +74,7 @@
         }
 
         .brand h1 {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.2;
             margin: 0;
         }
@@ -81,7 +82,7 @@
         .brand span {
             display: block;
             margin-top: 4px;
-            color: #9ca3af;
+            color: var(--muted);
             font-size: 12px;
             font-weight: 500;
         }
@@ -92,7 +93,7 @@
         }
 
         .nav a {
-            color: #cbd5e1;
+            color: #4b5b73;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -104,20 +105,20 @@
         }
 
         .nav a:hover, .nav a.active {
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
+            background: #eef3f8;
+            color: var(--ink);
         }
 
         .side-card {
             margin-top: 28px;
             padding: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
+            background: #f8fbff;
         }
 
         .side-card .label {
-            color: #9ca3af;
+            color: var(--muted);
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
@@ -127,24 +128,23 @@
         .side-card .value {
             display: block;
             margin-top: 8px;
-            color: white;
+            color: var(--ink);
             font-size: 26px;
             font-weight: 800;
         }
 
         main {
             min-width: 0;
-            height: 100vh;
-            overflow: hidden;
-            padding: 18px;
+            min-height: 100vh;
+            padding: 20px 20px;
         }
 
         .topbar {
-            display: none;
+            display: flex;
             justify-content: space-between;
             align-items: flex-start;
             gap: 18px;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .eyebrow {
@@ -158,14 +158,15 @@
 
         .topbar h2 {
             margin: 0;
-            font-size: 30px;
+            font-size: 32px;
             letter-spacing: 0;
         }
 
         .topbar p {
             margin: 7px 0 0;
             color: var(--muted);
-            max-width: 760px;
+            max-width: 940px;
+            font-size: 16px;
             line-height: 1.5;
         }
 
@@ -186,17 +187,17 @@
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .kpi {
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 8px;
-            padding: 13px 14px;
+            padding: 20px 22px;
             box-shadow: var(--shadow);
-            min-height: 92px;
+            min-height: 128px;
         }
 
         .kpi-head {
@@ -209,8 +210,8 @@
         }
 
         .kpi-icon {
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             border-radius: 8px;
             display: grid;
             place-items: center;
@@ -220,8 +221,8 @@
 
         .kpi-value {
             display: block;
-            margin-top: 10px;
-            font-size: 24px;
+            margin-top: 24px;
+            font-size: 31px;
             font-weight: 800;
         }
 
@@ -235,11 +236,9 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
-            gap: 12px;
-            align-items: stretch;
-            height: calc(100vh - 36px);
-            min-height: 0;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
         }
 
         body.view-overview .dashboard-grid {
@@ -266,7 +265,7 @@
         }
 
         body.view-segments .full-row {
-            grid-column: auto;
+            grid-column: 1 / -1;
         }
 
         .overview-predict {
@@ -277,20 +276,37 @@
 
         body.view-overview .overview-predict {
             display: flex;
-            height: calc(100vh - 140px);
+            min-height: 0;
+        }
+
+        body.view-overview .kpi-grid {
+            grid-template-columns: repeat(4, minmax(180px, 1fr));
+            gap: 18px;
+        }
+
+        body.view-overview .kpi {
+            min-height: 118px;
+            padding: 18px 20px;
+        }
+
+        body.view-overview .kpi-value {
+            margin-top: 18px;
+            font-size: 29px;
         }
 
         .overview-predict .panel-body {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            align-items: stretch;
+            grid-template-columns: minmax(420px, 0.92fr) minmax(420px, 1.08fr);
+            gap: 30px;
+            align-items: start;
         }
 
         .overview-predict .prediction-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             margin-top: 0;
-            min-height: 100%;
+            min-height: 336px;
         }
 
         .prediction-empty {
@@ -312,11 +328,10 @@
         .dashboard-grid > .panel {
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         .panel-header {
-            padding: 12px 14px;
+            padding: 20px 22px;
             border-bottom: 1px solid var(--line);
             display: flex;
             align-items: center;
@@ -326,7 +341,7 @@
 
         .panel-title {
             margin: 0;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 800;
         }
 
@@ -337,16 +352,16 @@
         }
 
         .panel-body {
-            padding: 12px;
+            padding: 26px 28px;
             min-height: 0;
             flex: 1;
         }
 
         .chart-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            height: 100%;
+            grid-template-columns: repeat(2, minmax(320px, 1fr));
+            column-gap: 28px;
+            row-gap: 28px;
         }
 
         .chart-box {
@@ -367,11 +382,82 @@
 
         .chart-frame {
             position: relative;
-            height: 190px;
+            height: 300px;
         }
 
         .chart-frame.short {
-            height: 142px;
+            height: 255px;
+        }
+
+        body.view-segments #distributions .panel-body {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        body.view-segments #distributions .chart-box {
+            margin-top: 0 !important;
+        }
+
+        body.view-model .chart-frame {
+            height: 320px;
+        }
+
+        body.view-model #model .panel-body {
+            padding: 28px;
+        }
+
+        body.view-model #model .metric-list {
+            grid-template-columns: repeat(4, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        body.view-model #model .metric {
+            background: #f8fbff;
+            padding: 18px;
+        }
+
+        body.view-model #model .metric strong {
+            font-size: 28px;
+        }
+
+        body.view-model #model .chart-grid {
+            grid-template-columns: repeat(2, minmax(420px, 1fr));
+            column-gap: 30px;
+            row-gap: 30px;
+        }
+
+        body.view-model #model .chart-box {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #ffffff;
+            padding: 18px;
+        }
+
+        body.view-model #model .chart-box.full-row {
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        body.view-model #model .chart-title {
+            margin-bottom: 14px;
+            font-size: 12px;
+        }
+
+        body.view-model #model .matrix {
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        body.view-model #model .matrix-cell {
+            background: #f8fbff;
+            padding: 18px;
+        }
+
+        body.view-model #model .matrix-cell strong {
+            font-size: 28px;
         }
 
         .full-row {
@@ -381,12 +467,14 @@
         .predict-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 9px;
+            column-gap: 20px;
+            row-gap: 15px;
+            align-content: start;
         }
 
         .field label {
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 7px;
             color: var(--muted);
             font-size: 12px;
             font-weight: 800;
@@ -397,9 +485,10 @@
             border: 1px solid var(--line);
             background: #fbfdff;
             color: var(--ink);
-            padding: 8px 10px;
+            padding: 10px 12px;
             border-radius: 8px;
             outline: none;
+            font-size: 16px;
         }
 
         .field input:focus, .field select:focus {
@@ -409,11 +498,13 @@
 
         .predict-btn {
             grid-column: 1 / -1;
+            margin-top: 6px;
             border: 0;
             background: var(--teal);
             color: white;
-            min-height: 40px;
+            min-height: 50px;
             border-radius: 8px;
+            font-size: 16px;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -431,12 +522,12 @@
             border: 1px solid var(--line);
             border-radius: 8px;
             background: #fbfdff;
-            padding: 14px;
+            padding: 34px 38px;
             display: none;
         }
 
         .prediction-card.show {
-            display: block;
+            display: flex;
         }
 
         .prediction-top {
@@ -444,7 +535,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .prediction-label {
@@ -475,14 +566,14 @@
         }
 
         .risk-value {
-            font-size: 34px;
+            font-size: 44px;
             font-weight: 800;
             line-height: 1;
         }
 
         .risk-track {
             height: 10px;
-            margin-top: 12px;
+            margin-top: 16px;
             background: #e5e7eb;
             border-radius: 999px;
             overflow: hidden;
@@ -570,8 +661,24 @@
                 grid-template-columns: 1fr;
                 height: auto;
             }
+            .chart-frame,
+            .chart-frame.short {
+                height: 220px;
+            }
+            body.view-segments #distributions .panel-body {
+                grid-template-columns: 1fr;
+            }
+            body.view-model #model .metric-list,
+            body.view-model #model .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            body.view-overview .kpi-grid,
+            body.view-overview .overview-predict .panel-body {
+                grid-template-columns: 1fr 1fr;
+            }
             body.view-overview .overview-predict {
                 height: auto;
+                min-height: 0;
             }
         }
 
@@ -580,6 +687,13 @@
             .topbar { display: none; }
             .status-pill { margin-top: 14px; }
             .kpi-grid, .chart-grid, .predict-grid, .metric-list, .overview-predict .panel-body { grid-template-columns: 1fr; }
+            body.view-overview .kpi-grid,
+            body.view-overview .overview-predict .panel-body {
+                grid-template-columns: 1fr;
+            }
+            body.view-model #model .panel-body {
+                padding: 18px;
+            }
             .predict-btn, .full-row { grid-column: auto; }
             .nav { grid-template-columns: 1fr 1fr; width: 100%; }
             .topbar h2 { font-size: 25px; }
@@ -610,14 +724,7 @@
         </aside>
 
         <main>
-            <section class="topbar" id="overview">
-                <div>
-                    <p class="eyebrow" id="viewEyebrow">Bank Customer Retention</p>
-                    <h2 id="viewTitle">Customer Churn Dashboard</h2>
-                    <p id="viewDescription">Live portfolio summary, churn segments, model diagnostics, and one-customer risk scoring from the trained Random Forest model.</p>
-                </div>
-                <div class="status-pill"><i class="fas fa-circle-check"></i> Model Ready</div>
-            </section>
+            
 
             <section class="kpi-grid">
                 <article class="kpi">
@@ -723,10 +830,7 @@
 
             <div class="dashboard-grid">
                 <div class="panel" id="segments">
-                    <div class="panel-header">
-                        <h3 class="panel-title">Portfolio And Segment Analytics</h3>
-                        <span class="panel-note">dynamic from train.csv</span>
-                    </div>
+                 
                     <div class="panel-body">
                         <div class="chart-grid">
                             <div class="chart-box">
@@ -765,7 +869,7 @@
                             <div class="metric"><span>Recall</span><strong id="metricRecall">{{ recall }}</strong></div>
                             <div class="metric"><span>ROC AUC</span><strong id="metricAuc">{{ roc_auc }}</strong></div>
                         </div>
-                        <div class="chart-grid" style="margin-top:16px;">
+                        <div class="chart-grid">
                             <div class="chart-box">
                                 <div class="chart-title"><span>Feature Importance</span></div>
                                 <div class="chart-frame"><canvas id="featureChart"></canvas></div>
@@ -830,24 +934,6 @@
         Chart.defaults.font.family = "Inter";
         Chart.defaults.color = "#475467";
 
-        const views = {
-            overview: {
-                eyebrow: "Bank Customer Retention",
-                title: "Customer Churn Dashboard",
-                description: "Live portfolio summary from the trained Random Forest model."
-            },
-            segments: {
-                eyebrow: "Segment Analytics",
-                title: "Portfolio And Segment Analytics",
-                description: "Customer mix, churn rates, and key distributions generated from train.csv."
-            },
-            model: {
-                eyebrow: "Validation Diagnostics",
-                title: "Model Diagnostics",
-                description: "Random Forest validation performance, feature importance, ROC curve, and confusion matrix."
-            }
-        };
-
         function resizeCharts() {
             [
                 "geoChurnChart",
@@ -869,11 +955,8 @@
 
         function showView(view) {
             const requested = view === "predict" ? "overview" : view;
-            const selected = views[requested] ? requested : "overview";
+            const selected = ["overview", "segments", "model"].includes(requested) ? requested : "overview";
             document.body.className = `view-${selected}`;
-            document.getElementById("viewEyebrow").textContent = views[selected].eyebrow;
-            document.getElementById("viewTitle").textContent = views[selected].title;
-            document.getElementById("viewDescription").textContent = views[selected].description;
 
             document.querySelectorAll(".nav a").forEach(link => {
                 link.classList.toggle("active", link.dataset.view === selected);
