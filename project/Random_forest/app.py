@@ -18,7 +18,7 @@ from sklearn.model_selection import train_test_split
 app = Flask(__name__)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TRAIN_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "train.csv"))
+TRAIN_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "train.csv"))
 
 if not os.path.exists(TRAIN_PATH):
     raise FileNotFoundError(f"Could not find training data at: {TRAIN_PATH}")
